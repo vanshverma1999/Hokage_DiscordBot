@@ -1,3 +1,4 @@
+import commands.CommandManager;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -11,10 +12,13 @@ import java.util.HashSet;
 
 public class Bot extends ListenerAdapter {
 
+    public static JDA jda;
+    public static JDABuilder jdaBuilder;
+
     public static void main(String[] args) throws LoginException {
 
         /* Building Discord bot and token is used to connect back-end to front-end(BOT) */
-        JDA jda = JDABuilder.createDefault("ODgzNjc4MDM1MTkzMjUzOTE5.YTNbTQ.05YtcaMOdrBrCiRycEDeIZGAWXI").build();
+         jda = JDABuilder.createDefault("ODgzNjc4MDM1MTkzMjUzOTE5.YTNbTQ.05YtcaMOdrBrCiRycEDeIZGAWXI").build();
 
         /* Status of BOT ( Online, idle , offline, Invisible) */
         jda.getPresence().setStatus(OnlineStatus.IDLE);
@@ -24,5 +28,16 @@ public class Bot extends ListenerAdapter {
 
         /* Event Listener is responsible of handling events */
         jda.addEventListener(new Command());
+        jda.addEventListener(new WelcomeMessage());
+
+
+        registerCommands();
     }
+
+    public static void registerCommands(){
+        CommandManager commandManager = new CommandManager();
+        jda.addEventListener(commandManager);
+    }
+
+
 }
