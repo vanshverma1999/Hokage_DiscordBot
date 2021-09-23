@@ -26,19 +26,5 @@ public class Moderation extends ListenerAdapter {
                 break;
             }
         }
-        /* Greeting members */
-        if (message[0].equals("!hello")) {
-            member = event.getMember();
-            event.getChannel().sendMessage("Hello, Greetings for the day! " + member.getAsMention()).queue();
-        }
-        /* Mentions */
-        if (message[0].equals("!mention")) {
-            member = event.getMessage().getMentionedMembers().get(0);
-            if (!member.getUser().isBot()) {
-                event.getChannel().sendMessage(("You've successfully mentioned the user : " + member.getUser().getAsMention())).queue();
-            } else {
-                event.getChannel().sendMessage("Sorry! I can't mention the bots!").queue();
-            }
-        }
     }
 }

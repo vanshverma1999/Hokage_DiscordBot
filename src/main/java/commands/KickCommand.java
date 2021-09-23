@@ -8,9 +8,6 @@ import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.TextChannel;
 
 public class KickCommand implements ServerCommand {
-
-
-
     @Override
     public void performCommand(String[] arguments, Guild guild, Member member, TextChannel textChannel, Message message) {
         /* !kick <user> <reason> */

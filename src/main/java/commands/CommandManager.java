@@ -53,6 +53,19 @@ public class CommandManager extends ListenerAdapter {
                     break;
                 case "!cooldown" :
                     cooldownCommand.performCommand(arguements, guild, member,textChannel,message);
+                    break;
+                case "!hello" :
+                    textChannel.sendMessage("Hello, Greetings for the day! " + member.getAsMention()).queue();
+                    break;
+                case "!mention" :
+                    member = event.getMessage().getMentionedMembers().get(0);
+                    //message.delete().queue(); To delete the message sent then mentioning
+                    if (!member.getUser().isBot()) {
+                        event.getChannel().sendMessage(("You have been mentioned through me : " + member.getUser().getAsMention())).queue();
+                    } else {
+                        event.getChannel().sendMessage("Sorry! I can't mention the bots!").queue();
+                    }
+                    break;
             }
         }
     }

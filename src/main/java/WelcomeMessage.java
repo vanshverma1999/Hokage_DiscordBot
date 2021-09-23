@@ -1,11 +1,16 @@
 import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.requests.GatewayIntent;
 
 import java.util.Random;
 
 /* Not working */
+
 public class WelcomeMessage extends ListenerAdapter {
+
+
     String[] messages = {
             "[member] joined. You must construct additional pylons.",
             "Never gonna give [member] up. Never let [member] down!",
@@ -19,6 +24,8 @@ public class WelcomeMessage extends ListenerAdapter {
     };
 
     public void onGuildMemberJoin(GuildMemberJoinEvent event) {
+
+
         Random rand = new Random();
         int number = rand.nextInt(messages.length);
 
@@ -26,8 +33,8 @@ public class WelcomeMessage extends ListenerAdapter {
         join.setColor(0x66d8ff);
         join.setDescription(messages[number].replace("[member]", event.getMember().getAsMention()));
 
-        event.getGuild().getDefaultChannel().sendMessage(join.build()).queue();
+        event.getGuild().getSystemChannel().sendMessage(join.build()).queue();
 
-        // Add role
+
     }
 }

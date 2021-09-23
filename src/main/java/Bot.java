@@ -4,6 +4,8 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.requests.GatewayIntent;
+
 import javax.security.auth.login.LoginException;
 
 public class Bot extends ListenerAdapter {
@@ -25,6 +27,9 @@ public class Bot extends ListenerAdapter {
         /* Event Listener is responsible of handling events */
         jda.addEventListener(new Moderation());
         jda.addEventListener(new WelcomeMessage());
+
+        //Bot.jdaBuilder.enableIntents(GatewayIntent.GUILD_MEMBERS);
+
         registerCommands();
     }
 
