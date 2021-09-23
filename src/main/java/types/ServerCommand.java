@@ -1,4 +1,4 @@
-package commands.types;
+package types;
 
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;

@@ -1,6 +1,6 @@
-package commands.commands;
+package commands;
 
-import commands.types.ServerCommand;
+import types.ServerCommand;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;

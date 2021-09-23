@@ -3,12 +3,8 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
-import net.dv8tion.jda.api.entities.Member;
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import org.jetbrains.annotations.NotNull;
 import javax.security.auth.login.LoginException;
-import java.util.HashSet;
 
 public class Bot extends ListenerAdapter {
 
@@ -27,10 +23,8 @@ public class Bot extends ListenerAdapter {
         jda.getPresence().setActivity(Activity.watching("The server"));
 
         /* Event Listener is responsible of handling events */
-        jda.addEventListener(new Command());
+        jda.addEventListener(new Moderation());
         jda.addEventListener(new WelcomeMessage());
-
-
         registerCommands();
     }
 
@@ -38,6 +32,4 @@ public class Bot extends ListenerAdapter {
         CommandManager commandManager = new CommandManager();
         jda.addEventListener(commandManager);
     }
-
-
 }

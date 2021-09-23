@@ -1,6 +1,5 @@
 package commands;
 
-import commands.commands.*;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
@@ -57,5 +56,4 @@ public class CommandManager extends ListenerAdapter {
             }
         }
     }
-
 }
