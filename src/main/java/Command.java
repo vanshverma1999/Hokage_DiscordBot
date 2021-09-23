@@ -29,7 +29,7 @@ public class Command extends ListenerAdapter {
         /* Greeting members */
         if (message[0].equals("!hello")) {
             member = event.getMember();
-            event.getChannel().sendMessage("Hello, Greetings for the day!" + member.getAsMention()).queue();
+            event.getChannel().sendMessage("Hello, Greetings for the day! " + member.getAsMention()).queue();
         }
         /* Mentions */
         if (message[0].equals("!mention")) {
