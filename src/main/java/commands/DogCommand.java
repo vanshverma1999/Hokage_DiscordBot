@@ -15,7 +15,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 
-public class MemeCommand implements ServerCommand {
+public class DogCommand implements ServerCommand {
     @Override
     public void performCommand(String[] arguments, Guild guild, Member member, TextChannel textChannel, Message message) {
         JSONParser parser = new JSONParser();
@@ -24,7 +24,7 @@ public class MemeCommand implements ServerCommand {
         String url ="";
 
             try {
-                URL memeURL = new URL("https://meme-api.herokuapp.com/gimme");
+                URL memeURL = new URL("https://random.dog/woof.json");
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(memeURL.openConnection().getInputStream()));
                 String lines;
                 while ((lines= bufferedReader.readLine()) != null){
@@ -42,7 +42,7 @@ public class MemeCommand implements ServerCommand {
                 EmbedBuilder builder = new EmbedBuilder()
                         .setTitle(title,postLink)
                         .setImage(url)
-                        .setColor(Color.ORANGE);
+                        .setColor(Color.CYAN);
                 textChannel.sendMessage(builder.build()).queue();
             }catch (Exception e ){
                 textChannel.sendMessage(":no entry: **Hey, Something went Wrong. Please try again later**").queue();
