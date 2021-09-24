@@ -34,7 +34,5 @@ public class WelcomeMessage extends ListenerAdapter {
         join.setDescription(messages[number].replace("[member]", event.getMember().getAsMention()));
 
         event.getGuild().getSystemChannel().sendMessage(join.build()).queue();
-
-
     }
 }

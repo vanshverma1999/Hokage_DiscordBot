@@ -28,31 +28,31 @@ public class CommandManager extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event){
 
         if(!event.getMember().getUser().isBot()){
-            String[] arguements = event.getMessage().getContentRaw().split(" ");
+            String[] arguments = event.getMessage().getContentRaw().split(" ");
 
             Guild guild = event.getGuild();
             Member member = event.getMember();
             TextChannel textChannel = event.getChannel();
             Message message = event.getMessage();
 
-            switch(arguements[0]){
+            switch(arguments[0]){
                 case "!help" :
-                    helpCommand.performCommand(arguements, guild,member, textChannel, message);
+                    helpCommand.performCommand(arguments, guild,member, textChannel, message);
                     break;
                 case "!clear" :
-                    clearCommand.performCommand(arguements, guild, member, textChannel, message);
+                    clearCommand.performCommand(arguments, guild, member, textChannel, message);
                     break;
                 case "!kick" :
-                    kickCommand.performCommand(arguements, guild, member,textChannel,message);
+                    kickCommand.performCommand(arguments, guild, member,textChannel,message);
                     break;
                 case "!ban" :
-                    banCommand.performCommand(arguements, guild, member,textChannel,message);
+                    banCommand.performCommand(arguments, guild, member,textChannel,message);
                     break;
                 case "!unban" :
-                    unBanCommand.performCommand(arguements, guild, member,textChannel,message);
+                    unBanCommand.performCommand(arguments, guild, member,textChannel,message);
                     break;
                 case "!cooldown" :
-                    cooldownCommand.performCommand(arguements, guild, member,textChannel,message);
+                    cooldownCommand.performCommand(arguments, guild, member,textChannel,message);
                     break;
                 case "!hello" :
                     textChannel.sendMessage("Hello, Greetings for the day! " + member.getAsMention()).queue();

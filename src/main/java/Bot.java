@@ -1,4 +1,5 @@
 import commands.CommandManager;
+import commands.MemeCommand;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -27,6 +28,7 @@ public class Bot extends ListenerAdapter {
         /* Event Listener is responsible of handling events */
         jda.addEventListener(new Moderation());
         jda.addEventListener(new WelcomeMessage());
+        jda.addEventListener(new MemeCommand());
 
         //Bot.jdaBuilder.enableIntents(GatewayIntent.GUILD_MEMBERS);
 
