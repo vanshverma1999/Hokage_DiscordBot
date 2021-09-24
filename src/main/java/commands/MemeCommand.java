@@ -37,7 +37,7 @@ public class MemeCommand extends ListenerAdapter {
                     }
                 }
                 bufferedReader.close();
-                event.getMessage().delete().queue();
+
                 EmbedBuilder builder = new EmbedBuilder()
                         .setTitle(title,postLink)
                         .setImage(url)
