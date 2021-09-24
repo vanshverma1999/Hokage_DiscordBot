@@ -1,27 +1,29 @@
 package commands;
 
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import org.jetbrains.annotations.NotNull;
+import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.entities.TextChannel;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import types.ServerCommand;
 
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 
-public class MemeCommand extends ListenerAdapter {
+public class MemeCommand implements ServerCommand {
     @Override
-    public void onGuildMessageReceived(@NotNull GuildMessageReceivedEvent event) {
-        String[] args = event.getMessage().getContentRaw().split(" ");
+    public void performCommand(String[] arguments, Guild guild, Member member, TextChannel textChannel, Message message) {
         JSONParser parser = new JSONParser();
         String postLink ="";
         String title ="";
         String url ="";
-        if(args[0].equalsIgnoreCase("!meme")){
+
+        if(arguments[0].equalsIgnoreCase("!meme")){
             try {
                 URL memeURL = new URL("https://meme-api.herokuapp.com/gimme");
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(memeURL.openConnection().getInputStream()));
@@ -42,9 +44,9 @@ public class MemeCommand extends ListenerAdapter {
                         .setTitle(title,postLink)
                         .setImage(url)
                         .setColor(Color.ORANGE);
-                event.getChannel().sendMessage(builder.build()).queue();
+                textChannel.sendMessage(builder.build()).queue();
             }catch (Exception e ){
-                event.getChannel().sendMessage(":no entry: **Hey, Something went Wrong. Please try again later**").queue();
+                textChannel.sendMessage(":no entry: **Hey, Something went Wrong. Please try again later**").queue();
                 e.printStackTrace();
             }
         }

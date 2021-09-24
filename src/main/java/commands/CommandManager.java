@@ -15,6 +15,7 @@ public class CommandManager extends ListenerAdapter {
     public final BanCommand banCommand;
     public final UnBanCommand unBanCommand;
     public final CooldownCommand cooldownCommand;
+    public final MemeCommand memeCommand;
     public CommandManager(){
         this.helpCommand = new HelpCommand();
         this.clearCommand = new ClearCommand();
@@ -22,6 +23,7 @@ public class CommandManager extends ListenerAdapter {
         this.banCommand = new BanCommand();
         this.unBanCommand = new UnBanCommand();
         this.cooldownCommand = new CooldownCommand();
+        this.memeCommand = new MemeCommand();
     }
 
     @Override
@@ -65,6 +67,9 @@ public class CommandManager extends ListenerAdapter {
                     } else {
                         event.getChannel().sendMessage("Sorry! I can't mention the bots!").queue();
                     }
+                    break;
+                case "!meme" :
+                    memeCommand.performCommand(arguments, guild, member,textChannel,message);
                     break;
             }
         }
