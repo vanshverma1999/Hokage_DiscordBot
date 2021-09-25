@@ -1,3 +1,9 @@
+package Main;
+
+import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
+import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
+import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
+import commands.AudioManager;
 import commands.CommandManager;
 import commands.EightBallCommand;
 import net.dv8tion.jda.api.JDA;
@@ -9,10 +15,10 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import javax.security.auth.login.LoginException;
 
 public class Bot extends ListenerAdapter {
-
     public static JDA jda;
     public static JDABuilder jdaBuilder;
-
+    public static AudioPlayerManager audioPlayerManager;
+    private static commands.AudioManager audioManager;
     public static void main(String[] args) throws LoginException {
 
         /* Building Discord bot and token is used to connect back-end to front-end(BOT) */
@@ -28,8 +34,12 @@ public class Bot extends ListenerAdapter {
         jda.addEventListener(new Moderation());
         jda.addEventListener(new WelcomeMessage());
         jda.addEventListener(new EightBallCommand());
+        
+        audioPlayerManager = new DefaultAudioPlayerManager();
+        audioManager = new AudioManager();
 
-        //Bot.jdaBuilder.enableIntents(GatewayIntent.GUILD_MEMBERS);
+        AudioSourceManagers.registerRemoteSources(audioPlayerManager);
+        //Main.Bot.jdaBuilder.enableIntents(GatewayIntent.GUILD_MEMBERS);
 
         registerCommands();
     }
@@ -37,5 +47,22 @@ public class Bot extends ListenerAdapter {
     public static void registerCommands(){
         CommandManager commandManager = new CommandManager();
         jda.addEventListener(commandManager);
+    }
+    public static JDA getJda(){
+        if(jda!=null){
+            return jda;
+        }
+        return null;
+    }
+    public static AudioPlayerManager getAudioPlayerManager(){
+        if(audioPlayerManager != null){
+            return audioPlayerManager;
+        }
+        return null;
+    }
+    public static AudioManager getAudioManager(){
+        if (audioManager != null)
+            return audioManager;
+        return null;
     }
 }

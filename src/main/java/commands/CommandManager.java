@@ -17,6 +17,8 @@ public class CommandManager extends ListenerAdapter {
     public final CooldownCommand cooldownCommand;
     public final MemeCommand memeCommand;
     public final DogCommand dogCommand;
+    public final PlayCommand playCommand;
+
     public CommandManager(){
         this.helpCommand = new HelpCommand();
         this.clearCommand = new ClearCommand();
@@ -26,6 +28,7 @@ public class CommandManager extends ListenerAdapter {
         this.cooldownCommand = new CooldownCommand();
         this.memeCommand = new MemeCommand();
         this.dogCommand = new DogCommand();
+        this.playCommand = new PlayCommand();
     }
 
     @Override
@@ -75,6 +78,9 @@ public class CommandManager extends ListenerAdapter {
                     break;
                 case "!dog" :
                     dogCommand.performCommand(arguments, guild, member, textChannel, message);
+                    break;
+                case "!play" :
+                    playCommand.performCommand(arguments,guild,member,textChannel,message);
                     break;
             }
         }
