@@ -81,12 +81,13 @@ public class CommandManager extends ListenerAdapter {
                 case "!dog" :
                     dogCommand.performCommand(arguments, guild, member, textChannel, message);
                     break;
-                case "!8ball" :
-                    eightBallCommand.performCommand(arguments, guild, member, textChannel, message);
-                    break;
                 case "!play" :
                     playCommand.performCommand(arguments,guild,member,textChannel,message);
                     break;
+                case "!8ball" :
+                    eightBallCommand.performCommand(arguments, guild, member, textChannel, message);
+                    break;
+
             }
         }
     }
