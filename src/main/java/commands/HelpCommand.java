@@ -12,13 +12,21 @@ public class HelpCommand implements ServerCommand {
     public void performCommand(String[] arguments, Guild guild, Member member, TextChannel textChannel, Message message) {
         EmbedBuilder embedBuilder = new EmbedBuilder();
 
-        embedBuilder.setColor(0x2ecc71);
+        embedBuilder.setColor(0xC4E538);
         embedBuilder.setTitle("Some Helpful Commands");
-        embedBuilder.setDescription("\n**!help** - *To check which commands are available*\n\n**!clear <Integer>** - *clears some messages*\n" +
-                "                \n**!ban <user> <reason>** - *Banish the mentioned user from the server*\n" +
-                "                \n**!unban <userID>** - *Un-Banish the mentioned user from the server*\n" +
-                "                \n**!cooldown** - *Lets you wait 30 seconds before you can use the command again*\n" +
-                "                \n**!kick <user> <reason>** - *Kicks the mentioned user from the server*");
+        embedBuilder.setDescription("**-----------------------------------------------------------------------------------------------------**\n" +
+                "\n**!help** - *To display all the usefull commands available*\n" +
+                "\n**!userinfo <user mentioned>** - *To display a detailed overview of a user*\n" +
+                "\n**!clear <Amount>** - *To delete the specified amount of messages from a text channel*\n" +
+                "\n**!kick <user> <reason>** - *To remove a user from the server \n(You must have the admin role to use this!)*\n" +
+                "\n**!ban <user> <reason>** - *To Ban a user from the server and they cant join until you unban them \n(You must have the admin role to use this!)*\n" +
+                "\n**!unban <userID>** - *To Unban a user from the server so they can join back \n(You must have the admin role to use this!)*\n" +
+                "\n**!meme** - *To display a funny meme from reddit*\n" +
+                "\n**!dog** - *To display a cute dog picture from reddit*\n" +
+                "\n**!cooldown** - *To give a 30 second cooldown to the user*\n" +
+                "\n**!8ball <Question>** - *To get the future prediction about the question asked*\n" +
+                "\n**!play <link/name>** - *To play the specified song/video in your connected voice channel \n(You must be present in the voice channel to let the bot know about your presence)*\n" +
+                "\n**-----------------------------------------------------------------------------------------------------**");
         textChannel.sendMessage(embedBuilder.build()).queue();
     }
 }

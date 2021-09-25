@@ -11,6 +11,7 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.requests.GatewayIntent;
 
 import javax.security.auth.login.LoginException;
 
@@ -39,7 +40,7 @@ public class Bot extends ListenerAdapter {
         audioManager = new AudioManager();
 
         AudioSourceManagers.registerRemoteSources(audioPlayerManager);
-        //Main.Bot.jdaBuilder.enableIntents(GatewayIntent.GUILD_MEMBERS);
+        //jdaBuilder.enableIntents(GatewayIntent.GUILD_MEMBERS);
 
         registerCommands();
     }
