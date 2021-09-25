@@ -33,7 +33,7 @@ public class Bot extends ListenerAdapter {
         /* Event Listener is responsible of handling events */
         jda.addEventListener(new Moderation());
         jda.addEventListener(new WelcomeMessage());
-        jda.addEventListener(new EightBallCommand());
+
         
         audioPlayerManager = new DefaultAudioPlayerManager();
         audioManager = new AudioManager();

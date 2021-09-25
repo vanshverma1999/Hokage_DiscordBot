@@ -1,24 +1,36 @@
 package commands;
 
 import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
+import types.ServerCommand;
 
 import java.util.Random;
 
-public class EightBallCommand extends ListenerAdapter {
+public class EightBallCommand implements ServerCommand {
+
     @Override
-    public void onGuildMessageReceived(@NotNull GuildMessageReceivedEvent event) {
-        String[] s = event.getMessage().getContentRaw().split(" ");
-        if(s[0].equalsIgnoreCase("!8ball")){
+    public void performCommand(String[] arguments, Guild guild, Member member, TextChannel textChannel, Message message) {
+        if(arguments.length <2){
+            textChannel.sendMessage("Please mention the question as well!").queue();
+        }
+        else if(arguments[0].equalsIgnoreCase("!8ball")){
             EmbedBuilder embedBuilder = new EmbedBuilder();
             embedBuilder.setTitle("Your Horoscope");
+
             embedBuilder.setColor(0x2ecc71);
-            embedBuilder.setDescription("Try Again");
-            event.getChannel().sendMessage(randomString()).queue();
+            embedBuilder.setThumbnail("https://cafeastrology.com/wp-content/plugins/magic-answers/images/ball.png");
+            embedBuilder.setDescription(randomString());
+            embedBuilder.setFooter("Hope this prediction will help you :)");
+            textChannel.sendMessage(embedBuilder.build()).queue();
         }
     }
+
     public static String randomString(){
         Random r = new Random();
 
@@ -60,4 +72,6 @@ public class EightBallCommand extends ListenerAdapter {
 
         return  "MAGIC 8-BALL SAYS: " + response;
     }
+
+
 }

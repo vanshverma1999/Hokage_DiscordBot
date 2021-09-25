@@ -18,6 +18,7 @@ public class CommandManager extends ListenerAdapter {
     public final MemeCommand memeCommand;
     public final DogCommand dogCommand;
     public final PlayCommand playCommand;
+    public final EightBallCommand eightBallCommand;
 
     public CommandManager(){
         this.helpCommand = new HelpCommand();
@@ -29,6 +30,7 @@ public class CommandManager extends ListenerAdapter {
         this.memeCommand = new MemeCommand();
         this.dogCommand = new DogCommand();
         this.playCommand = new PlayCommand();
+        this.eightBallCommand = new EightBallCommand();
     }
 
     @Override
@@ -81,6 +83,9 @@ public class CommandManager extends ListenerAdapter {
                     break;
                 case "!play" :
                     playCommand.performCommand(arguments,guild,member,textChannel,message);
+                    break;
+                case "!8ball" :
+                    eightBallCommand.performCommand(arguments, guild, member, textChannel, message);
                     break;
             }
         }
