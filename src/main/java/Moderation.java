@@ -3,6 +3,7 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
 import java.util.HashSet;
+
 public class Moderation extends ListenerAdapter {
     @Override
     public void onGuildMessageReceived(@NotNull GuildMessageReceivedEvent event) {
@@ -19,7 +20,7 @@ public class Moderation extends ListenerAdapter {
         Member member;
         /* Moderation */
         for (String bad: set) {
-            if (receivedMessage.contains(bad)) {
+            if (receivedMessage.contains(bad.toLowerCase())) {
                 member = event.getMember();
                 event.getChannel().sendMessage(member.getAsMention() + "Please do not use bad words. We do not tolerate such behaviour!!!").queue();
                 event.getChannel().sendMessage("Moderators please look into this matter").queue();
