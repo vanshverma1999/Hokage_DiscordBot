@@ -1,3 +1,5 @@
+//!play https://www.youtube.com/watch?v=i-VQl94tw2s
+//only url working
 package commands;
 
 import net.dv8tion.jda.api.entities.Guild;
@@ -19,6 +21,7 @@ public class CommandManager extends ListenerAdapter {
     public final DogCommand dogCommand;
     public final PlayCommand playCommand;
     public final EightBallCommand eightBallCommand;
+    public final UserInfoCommand userInfoCommand;
 
     public CommandManager(){
         this.helpCommand = new HelpCommand();
@@ -31,6 +34,7 @@ public class CommandManager extends ListenerAdapter {
         this.dogCommand = new DogCommand();
         this.playCommand = new PlayCommand();
         this.eightBallCommand = new EightBallCommand();
+        this.userInfoCommand = new UserInfoCommand();
     }
 
     @Override
@@ -87,7 +91,9 @@ public class CommandManager extends ListenerAdapter {
                 case "!8ball" :
                     eightBallCommand.performCommand(arguments, guild, member, textChannel, message);
                     break;
-
+                case "!userinfo" :
+                    userInfoCommand.performCommand(arguments,guild, member, textChannel, message);
+                    break;
             }
         }
     }
