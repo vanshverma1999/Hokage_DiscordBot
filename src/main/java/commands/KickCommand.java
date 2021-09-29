@@ -20,6 +20,9 @@ public class KickCommand implements ServerCommand {
                         textChannel.sendMessage("The user : "+target.getUser().getName()+ " was kicked for "+reason).queue();
                         target.kick(reason).queue();
                     }
+                    else{
+                        textChannel.sendMessage("You don't have permissions for this command.").queue();
+                    }
                 }
             }
         }else{

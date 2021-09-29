@@ -37,6 +37,7 @@ public class PlayCommand implements ServerCommand {
                         @Override
                         public void trackLoaded(AudioTrack audioTrack) {
                             musicController.getAudioPlayer().playTrack(audioTrack);
+                            textChannel.sendMessage("Plaing : "+ url).queue();
                         }
 
                         @Override

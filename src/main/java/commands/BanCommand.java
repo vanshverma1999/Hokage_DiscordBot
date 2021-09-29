@@ -17,7 +17,11 @@ public class BanCommand implements ServerCommand {
                 String reason = arguments[2];
                 if(reason != null){
                     if(member.hasPermission(Permission.BAN_MEMBERS)){
+                        textChannel.sendMessage("You have successfully banned "+target.getUser().getName()+ " from the server for "+reason).queue();
                         target.ban(0,reason).queue();
+                    }
+                    else{
+                        textChannel.sendMessage("You don't have permissions for this command.").queue();
                     }
                 }
             }

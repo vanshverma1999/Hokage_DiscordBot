@@ -68,7 +68,7 @@ public class CommandManager extends ListenerAdapter {
                     cooldownCommand.performCommand(arguments, guild, member,textChannel,message);
                     break;
                 case "!hello" :
-                    textChannel.sendMessage("Hello, Greetings for the day! " + member.getAsMention()).queue();
+                    textChannel.sendMessage("Hello, Greetings for the day! Type !help for available commands. " + member.getAsMention()).queue();
                     break;
                 case "!mention" :
                     member = event.getMessage().getMentionedMembers().get(0);
