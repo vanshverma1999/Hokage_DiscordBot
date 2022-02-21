@@ -23,7 +23,7 @@ public class Bot extends ListenerAdapter {
     public static void main(String[] args) throws LoginException {
 
         /* Building Discord bot and token is used to connect back-end to front-end(BOT) */
-         jda = JDABuilder.createDefault("ODgzNjc4MDM1MTkzMjUzOTE5.YTNbTQ.05YtcaMOdrBrCiRycEDeIZGAWXI").build();
+         jda = JDABuilder.createDefault("ODgzNjc4MDM1MTkzMjUzOTE5.YTNbTQ.wz5u1fVcNFq3nGEk1VroJkBXB64").build();
 
         /* Status of BOT ( Online, idle , offline, Invisible) */
         jda.getPresence().setStatus(OnlineStatus.IDLE);
